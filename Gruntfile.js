@@ -2,6 +2,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-less');
 
     grunt.initConfig({
@@ -40,6 +41,17 @@ module.exports = function(grunt) {
             }
         },
 
+        cssmin : {
+            bootstrap : {
+                options : {
+                    keepSpecialComments : 0
+                },
+                files : {
+                    'dist/css/bootstrap.min.css' : ['dist/css/bootstrap.css']
+                }
+            }
+        },
+
         less : {
             bootstrap : {
                 options : {
@@ -60,6 +72,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'copy:bootstrap',
-        'less:bootstrap'
+        'less:bootstrap',
+        'cssmin:bootstrap'
     ]);
 };
