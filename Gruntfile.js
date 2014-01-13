@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     grunt.initConfig({
         bower : {
@@ -8,14 +10,45 @@ module.exports = function(grunt) {
                 options : {
                     cleanBowerDir : false,
                     copy          : false,
-                    install       : true,
-                    verbose       : true
+                    install       : true
                 }
             }
         },
 
         clean : {
-            bower : ['bower_components']
+            bower : ['bower_components/'],
+            dist  : ['dist/']
+        },
+
+        copy : {
+            bootstrap : {
+                files : [
+                    {
+                        expand  : true,
+                        flatten : true,
+                        src     : ['bower_components/bootstrap/dist/js/**'],
+                        dest    : 'dist/js/',
+                        filter  : 'isFile'
+                    }, {
+                        expand  : true,
+                        flatten : true,
+                        src     : ['bower_components/bootstrap/dist/fonts/**'],
+                        dest    : 'dist/fonts',
+                        filter  : 'isFile'
+                    }
+                ]
+            }
+        },
+
+        less : {
+            bootstrap : {
+                options : {
+                    cleancss : false
+                },
+                files : {
+                    'dist/css/bootstrap.css' : 'src/bootstrap.less'
+                }
+            }
         }
     });
 
@@ -25,5 +58,8 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('build', [
+        'clean:dist',
+        'copy:bootstrap',
+        'less:bootstrap'
     ]);
 };
