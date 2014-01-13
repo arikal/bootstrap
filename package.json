@@ -1,0 +1,19 @@
+{
+    "name": "fusion-bootstrap",
+    "description": "Custom bootstrap for use in fusion.",
+    "homepage": "http://gitlab.mobilefun.co.uk/fusion/bootstrap",
+    "bugs": {
+        "url": "http://gitlab.mobilefun.co.uk/fusion/bootstrap/issues",
+        "email": "web-developers@mobilefun.co.uk"
+    },
+    "license": "private",
+    "author": "Mark Shercliff <mark.shercliff@mobilefun.co.uk>",
+    "contributors": [],
+    "repository": {
+        "type": "git",
+        "url": "http://gitlab.mobilefun.co.uk/fusion/bootstrap"
+    },
+    "devDependencies": {
+        "grunt": "~0.4"
+    }
+}
