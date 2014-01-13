@@ -1,0 +1,9 @@
+{
+    "name": "fusion-bootstrap",
+    "main": [],
+    "ignore": [],
+    "devDependencies": {
+        "bootstrap": "~3.0"
+    },
+    "private": true
+}
